@@ -11,8 +11,13 @@ import (
 )
 
 func main() {
+	crop("tate.jpg", "tate_out.jpg")
+	crop("yoko.jpg", "yoko_out.jpg")
+}
+
+func crop(path string, outPath string) {
 	// 入力画像を読み込む
-	inputFile, err := os.Open("input.jpg")
+	inputFile, err := os.Open(path)
 	if err != nil {
 		log.Fatalf("画像の読み込みに失敗しました: %v", err)
 	}
@@ -93,7 +98,7 @@ func main() {
 	}
 
 	// 処理した画像を保存
-	outputFile, err := os.Create("output.jpg")
+	outputFile, err := os.Create(outPath)
 	if err != nil {
 		log.Fatalf("画像の保存に失敗しました: %v", err)
 	}
